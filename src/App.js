@@ -16,6 +16,10 @@ class App extends Component {
       .catch((error) => console.log('fetch error ', error));
   }
 
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  };
+
   render() {
     // const monster = this.state.monsters, searchField = this.state.searchField;
     // deconstructed version
@@ -26,10 +30,8 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <SearchBox
-          placeholder={'Search monster'}
-          handleChange={(e) => this.setState({ searchField: e.target.value })}
-        />
+        <h1 className='header'>Monsters Demo</h1>
+        <SearchBox placeholder={'Search monster'} handleChange={this.handleChange} />
         <CardList monsters={filteredMonsters}></CardList>
       </div>
     );
